@@ -1,13 +1,23 @@
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'war'
     apply plugin: 'eclipse'
 
     repositories {
         mavenCentral()
     }
 
+    group                 = 'com.bluepapa32.bookstore'
+    version               = '1.0.0-SNAPSHOT'
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+}
+
+project(':webapp') {
+    apply plugin: 'war'
+
     dependencies {
+        compile project(':model')
+
         providedCompile 'javax.servlet:servlet-api:2.5'
         providedCompile 'javax.servlet.jsp:jsp-api:2.1'
 
@@ -15,10 +25,6 @@ subprojects {
         runtime 'taglibs:standard:1.1.2'
     }
 
-    group                 = 'com.bluepapa32.bookstore'
-    version               = '1.0.0-SNAPSHOT'
     archivesBaseName      = 'bookstore'
     eclipseWtp.deployName = 'bookstore'
-
-    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 }
