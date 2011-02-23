@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    providedCompile 'javax.servlet.jsp:jsp-api:2.1'
+
+    runtime 'javax.servlet:jstl:1.1.2'
+    runtime 'taglibs:standard:1.1.2'
+}
+
+group                 = 'com.bluepapa32.bookstore'
+version               = '1.0.0-SNAPSHOT'
+archivesBaseName      = 'bookstore'
+eclipseWtp.deployName = 'bookstore'
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
