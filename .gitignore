@@ -1,0 +1,7 @@
+*.swp
+*.swo
+.gradle
+bin
+build
+repos
+gradle.properties
